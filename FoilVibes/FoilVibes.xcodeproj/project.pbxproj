@@ -13,6 +13,10 @@
 		790F5C311E09BA0C00F9041B /* MessagesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 790F5C301E09BA0C00F9041B /* MessagesViewController.m */; };
 		790F5C341E09BA0C00F9041B /* MainInterface.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 790F5C321E09BA0C00F9041B /* MainInterface.storyboard */; };
 		790F5C361E09BA0C00F9041B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 790F5C351E09BA0C00F9041B /* Assets.xcassets */; };
+		790F5C421E09BD5700F9041B /* Selima .otf in Resources */ = {isa = PBXBuildFile; fileRef = 790F5C411E09BD5700F9041B /* Selima .otf */; };
+		790F5C431E09BD5700F9041B /* Selima .otf in Resources */ = {isa = PBXBuildFile; fileRef = 790F5C411E09BD5700F9041B /* Selima .otf */; };
+		790F5C451E09C03700F9041B /* Selima .ttf in Resources */ = {isa = PBXBuildFile; fileRef = 790F5C441E09C03700F9041B /* Selima .ttf */; };
+		790F5C461E09C03700F9041B /* Selima .ttf in Resources */ = {isa = PBXBuildFile; fileRef = 790F5C441E09C03700F9041B /* Selima .ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +54,8 @@
 		790F5C331E09BA0C00F9041B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/MainInterface.storyboard; sourceTree = "<group>"; };
 		790F5C351E09BA0C00F9041B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		790F5C371E09BA0C00F9041B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		790F5C411E09BD5700F9041B /* Selima .otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Selima .otf"; sourceTree = "<group>"; };
+		790F5C441E09C03700F9041B /* Selima .ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Selima .ttf"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +111,8 @@
 			children = (
 				790F5C2F1E09BA0C00F9041B /* MessagesViewController.h */,
 				790F5C301E09BA0C00F9041B /* MessagesViewController.m */,
+				790F5C441E09C03700F9041B /* Selima .ttf */,
+				790F5C411E09BD5700F9041B /* Selima .otf */,
 				790F5C321E09BA0C00F9041B /* MainInterface.storyboard */,
 				790F5C351E09BA0C00F9041B /* Assets.xcassets */,
 				790F5C371E09BA0C00F9041B /* Info.plist */,
@@ -194,7 +202,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				790F5C451E09C03700F9041B /* Selima .ttf in Resources */,
 				790F5C211E09BA0C00F9041B /* Assets.xcassets in Resources */,
+				790F5C421E09BD5700F9041B /* Selima .otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -202,7 +212,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				790F5C431E09BD5700F9041B /* Selima .otf in Resources */,
 				790F5C361E09BA0C00F9041B /* Assets.xcassets in Resources */,
+				790F5C461E09C03700F9041B /* Selima .ttf in Resources */,
 				790F5C341E09BA0C00F9041B /* MainInterface.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
