@@ -10,12 +10,14 @@
 
 @protocol FVStickerViewDelegate <NSObject>
 
-- (BOOL)textViewShouldBeginEditing;
+- (void)test;
 
 @end
 
 @interface FVStickerView : MSStickerView
 
 @property (weak, nonatomic) id<FVStickerViewDelegate> delegate;
+
+@property (nonatomic, retain) MSSticker* foilSticker;
 
 @end

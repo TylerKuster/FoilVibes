@@ -7,14 +7,16 @@
 //
 
 #import "MessagesViewController.h"
-#import "FVStickerBrowserView.h"
+//#import "FVStickerBrowserView.h"
 #import "FVStickerView.h"
 
-@interface MessagesViewController () <FVStickerBrowserViewDelegate>
+@interface MessagesViewController () <FVStickerViewDelegate>
 
 @property (nonatomic, retain) IBOutlet UIView* paperView;
 //@property (nonatomic, retain) IBOutlet FVStickerBrowserView* stickerBrowserView;
 @property (nonatomic, retain) IBOutlet FVStickerView* stickerView;
+@property (nonatomic, retain) UITextView* stickerTextView;
+
 @end
 
 @implementation MessagesViewController
@@ -22,7 +24,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    //self.stickerView.delegate = self;
+    self.stickerView.delegate = self;
     CGFloat degrees = -4.0; // Because I'm cray
     self.stickerView.transform = CGAffineTransformMakeRotation(degrees * M_PI/180);
     //FVStickerBrowserViewController* test = [[FVStickerBrowserViewController alloc]initWithStickerSize:MSStickerSizeRegular];
@@ -35,19 +37,78 @@
   //  [self.paperView addSubview:test.view];
     
    // [test.stickerBrowserView reloadData];
+    
+    
+    self.stickerTextView = [[UITextView alloc]initWithFrame:CGRectMake(25, 25, 324, 420)];
+    self.stickerTextView.textContainerInset = UIEdgeInsetsMake(-50, 50, 0, 0);
+    self.stickerTextView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0];
+    self.stickerTextView.textAlignment = NSTextAlignmentCenter;
+    self.stickerTextView.font = [UIFont fontWithName:@"Chalkduster" size:60];
+    self.stickerTextView.textColor = [UIColor blackColor];
+    self.stickerTextView.userInteractionEnabled = NO;
+    
+    [self.view insertSubview:self.stickerTextView atIndex:0];
+    self.stickerTextView.text = @"\n\nAlmost...";
+    
+    UIImageView* imageOverlay = [[UIImageView alloc] initWithFrame:self.view.frame];
+    imageOverlay.image = [UIImage imageNamed:@"p2.png"];
+    imageOverlay.maskView = self.stickerTextView;
+    
+    [self.view addSubview:imageOverlay];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+/*
+- (void)saveImageWithView:(UIView *)view
+{
+    self.imageName = [NSString stringWithFormat:@"foilSticker.png"];
+    
+    UIGraphicsBeginImageContextWithOptions(view.bounds.size, !view.opaque, 0.0);
+    [view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    
+    UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
+    
+    UIGraphicsEndImageContext();
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString* path = [documentsDirectory stringByAppendingPathComponent:self.imageName];
+    NSData* data = UIImagePNGRepresentation(img);
+    [data writeToFile:path atomically:YES];
+    
+    //    NSData *imageData = UIImagePNGRepresentation(img);
+    //
+    //    NSString *documentsDirectory = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
+    //    NSString *imageSubdirectory = [documentsDirectory stringByAppendingPathComponent:@"MySubfolderName"];
+    //
+    //    NSString *filePath = [imageSubdirectory stringByAppendingPathComponent:@"Image.png"];
+    //
+    //    NSLog(@"filePath = %@", filePath);
+    ////     Convert UIImage object into NSData (a wrapper for a stream of bytes) formatted according to PNG spec
+    //
+    //    [imageData writeToFile:filePath atomically:YES];
+    //
+    //    // Create path.
+    //    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
+    //    NSString *filePath = [[paths objectAtIndex:0] stringByAppendingPathComponent:@"Image.png"];
+    //
+    //    // Save image.
+    //    [UIImagePNGRepresentation(img) writeToFile:filePath atomically:YES];
+    //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    //[self.stickerBrowserView reloadData];
+    //    });
+    
+}
+*/
 #pragma mark - Sticker Browser View
 
-- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+- (void)test
 {
     [self requestPresentationStyle:MSMessagesAppPresentationStyleExpanded];
-    [textView becomeFirstResponder];
-    return YES;
 }
 
 #pragma mark - Conversation Handling
@@ -94,6 +155,14 @@
 
 -(void)didTransitionToPresentationStyle:(MSMessagesAppPresentationStyle)presentationStyle {
     // Called after the extension transitions to a new presentation style.
+    if (presentationStyle == MSMessagesAppPresentationStyleExpanded)
+    {
+        [self.stickerTextView becomeFirstResponder];
+        self.stickerTextView.userInteractionEnabled = YES;
+        
+        self.stickerTextView.layer.zPosition = 1;
+        [self.view bringSubviewToFront:self.stickerTextView];
+    }
     
     // Use this method to finalize any behaviors associated with the change in presentation style.
 }

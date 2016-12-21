@@ -7,11 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		467F81B11E0AD7640000A669 /* leHeartdu.png in Resources */ = {isa = PBXBuildFile; fileRef = 467F81B01E0AD7640000A669 /* leHeartdu.png */; };
+		467F81B51E0AD8560000A669 /* brush.png in Resources */ = {isa = PBXBuildFile; fileRef = 467F81B21E0AD8560000A669 /* brush.png */; };
+		467F81B61E0AD8560000A669 /* goldPattern1.png in Resources */ = {isa = PBXBuildFile; fileRef = 467F81B31E0AD8560000A669 /* goldPattern1.png */; };
+		467F81B71E0AD8560000A669 /* swatch.png in Resources */ = {isa = PBXBuildFile; fileRef = 467F81B41E0AD8560000A669 /* swatch.png */; };
 		46FEF5711E09E07D00DE7382 /* black-5.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 46FEF5701E09E07D00DE7382 /* black-5.jpg */; };
 		46FEF5731E09E15800DE7382 /* white-4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 46FEF5721E09E15800DE7382 /* white-4.jpg */; };
-		46FEF57C1E09F13B00DE7382 /* FVStickerBrowserView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FEF57B1E09F13B00DE7382 /* FVStickerBrowserView.m */; };
 		46FEF57F1E0A005500DE7382 /* FVStickerView.m in Sources */ = {isa = PBXBuildFile; fileRef = 46FEF57E1E0A005500DE7382 /* FVStickerView.m */; };
 		46FEF5811E0A03A800DE7382 /* potato.png in Resources */ = {isa = PBXBuildFile; fileRef = 46FEF5801E0A03A800DE7382 /* potato.png */; };
+		46FEF5831E0A1D4200DE7382 /* p2.png in Resources */ = {isa = PBXBuildFile; fileRef = 46FEF5821E0A1D4200DE7382 /* p2.png */; };
 		790F5C211E09BA0C00F9041B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 790F5C201E09BA0C00F9041B /* Assets.xcassets */; };
 		790F5C281E09BA0C00F9041B /* MessagesExtension.appex in Embed App Extensions */ = {isa = PBXBuildFile; fileRef = 790F5C271E09BA0C00F9041B /* MessagesExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		790F5C2D1E09BA0C00F9041B /* Messages.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 790F5C2C1E09BA0C00F9041B /* Messages.framework */; };
@@ -49,14 +53,17 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		467F81B01E0AD7640000A669 /* leHeartdu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = leHeartdu.png; sourceTree = "<group>"; };
+		467F81B21E0AD8560000A669 /* brush.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = brush.png; sourceTree = "<group>"; };
+		467F81B31E0AD8560000A669 /* goldPattern1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = goldPattern1.png; sourceTree = "<group>"; };
+		467F81B41E0AD8560000A669 /* swatch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = swatch.png; sourceTree = "<group>"; };
 		46FEF5701E09E07D00DE7382 /* black-5.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "black-5.jpg"; sourceTree = "<group>"; };
 		46FEF5721E09E15800DE7382 /* white-4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "white-4.jpg"; sourceTree = "<group>"; };
 		46FEF5791E09ECF800DE7382 /* MessagesExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = MessagesExtension.entitlements; sourceTree = "<group>"; };
-		46FEF57A1E09F13B00DE7382 /* FVStickerBrowserView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FVStickerBrowserView.h; sourceTree = "<group>"; };
-		46FEF57B1E09F13B00DE7382 /* FVStickerBrowserView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FVStickerBrowserView.m; sourceTree = "<group>"; };
 		46FEF57D1E0A005500DE7382 /* FVStickerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FVStickerView.h; sourceTree = "<group>"; };
 		46FEF57E1E0A005500DE7382 /* FVStickerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FVStickerView.m; sourceTree = "<group>"; };
 		46FEF5801E0A03A800DE7382 /* potato.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = potato.png; sourceTree = "<group>"; };
+		46FEF5821E0A1D4200DE7382 /* p2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = p2.png; sourceTree = "<group>"; };
 		790F5C1D1E09BA0C00F9041B /* FoilVibes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FoilVibes.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		790F5C201E09BA0C00F9041B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		790F5C221E09BA0C00F9041B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,9 +134,12 @@
 				790F5C301E09BA0C00F9041B /* MessagesViewController.m */,
 				46FEF57D1E0A005500DE7382 /* FVStickerView.h */,
 				46FEF57E1E0A005500DE7382 /* FVStickerView.m */,
-				46FEF57A1E09F13B00DE7382 /* FVStickerBrowserView.h */,
-				46FEF57B1E09F13B00DE7382 /* FVStickerBrowserView.m */,
 				46FEF5801E0A03A800DE7382 /* potato.png */,
+				46FEF5821E0A1D4200DE7382 /* p2.png */,
+				467F81B01E0AD7640000A669 /* leHeartdu.png */,
+				467F81B21E0AD8560000A669 /* brush.png */,
+				467F81B31E0AD8560000A669 /* goldPattern1.png */,
+				467F81B41E0AD8560000A669 /* swatch.png */,
 				46FEF5701E09E07D00DE7382 /* black-5.jpg */,
 				46FEF5721E09E15800DE7382 /* white-4.jpg */,
 				790F5C441E09C03700F9041B /* Selima .ttf */,
@@ -238,13 +248,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				467F81B51E0AD8560000A669 /* brush.png in Resources */,
 				790F5C431E09BD5700F9041B /* Selima .otf in Resources */,
+				467F81B11E0AD7640000A669 /* leHeartdu.png in Resources */,
+				467F81B71E0AD8560000A669 /* swatch.png in Resources */,
 				46FEF5711E09E07D00DE7382 /* black-5.jpg in Resources */,
 				46FEF5731E09E15800DE7382 /* white-4.jpg in Resources */,
+				46FEF5831E0A1D4200DE7382 /* p2.png in Resources */,
 				790F5C361E09BA0C00F9041B /* Assets.xcassets in Resources */,
 				790F5C461E09C03700F9041B /* Selima .ttf in Resources */,
 				790F5C341E09BA0C00F9041B /* MainInterface.storyboard in Resources */,
 				46FEF5811E0A03A800DE7382 /* potato.png in Resources */,
+				467F81B61E0AD8560000A669 /* goldPattern1.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -256,7 +271,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				790F5C311E09BA0C00F9041B /* MessagesViewController.m in Sources */,
-				46FEF57C1E09F13B00DE7382 /* FVStickerBrowserView.m in Sources */,
 				46FEF57F1E0A005500DE7382 /* FVStickerView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

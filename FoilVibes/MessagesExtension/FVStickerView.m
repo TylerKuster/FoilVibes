@@ -8,6 +8,12 @@
 
 #import "FVStickerView.h"
 
+@interface FVStickerView ()
+
+
+
+@end
+
 @implementation FVStickerView
 
 - (instancetype)initWithFrame:(CGRect)frame
@@ -31,14 +37,26 @@
 - (void)commonInit
 {
     // Make the codes here
-    self.backgroundColor = [UIColor orangeColor];
+    self.backgroundColor = [UIColor clearColor];
 
     NSURL *imgPath = [[NSBundle mainBundle] URLForResource:@"potato" withExtension:@"png"];
     
-    MSSticker* sideNoteSticker = [[MSSticker alloc]initWithContentsOfFileURL:imgPath localizedDescription:@"sure" error:NULL];
+    self.foilSticker = [[MSSticker alloc]initWithContentsOfFileURL:imgPath localizedDescription:@"sure" error:NULL];
     
-    self.sticker = sideNoteSticker;
+    self.sticker = self.foilSticker;
     self.contentMode = UIViewContentModeScaleAspectFill;
+    
+    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(handleSingleTap:)];
+
+    [self addGestureRecognizer:singleFingerTap];
+}
+
+- (void)handleSingleTap:(UITapGestureRecognizer *)recognizer
+{
+    CGPoint location = [recognizer locationInView:[recognizer.view superview]];
+    NSLog(@"two for two, fuck yeah");
+    [self.delegate test];
+    //Do stuff here...
 }
 
 /*
