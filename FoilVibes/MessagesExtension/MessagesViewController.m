@@ -7,6 +7,7 @@
 //
 
 #import "MessagesViewController.h"
+#import "FVDefaults.h"
 //#import "FVStickerBrowserView.h"
 #import "FVStickerView.h"
 
@@ -15,7 +16,8 @@
 @property (nonatomic, retain) IBOutlet UIView* paperView;
 //@property (nonatomic, retain) IBOutlet FVStickerBrowserView* stickerBrowserView;
 @property (nonatomic, retain) IBOutlet FVStickerView* stickerView;
-@property (nonatomic, retain) UITextView* stickerTextView;
+@property (nonatomic, retain) IBOutlet UITextView* stickerTextView;
+@property (nonatomic, retain) IBOutlet NSLayoutConstraint* stickerTextViewCenterY;
 
 @end
 
@@ -39,19 +41,26 @@
    // [test.stickerBrowserView reloadData];
     
     
-    self.stickerTextView = [[UITextView alloc]initWithFrame:CGRectMake(25, 25, 324, 420)];
-    self.stickerTextView.textContainerInset = UIEdgeInsetsMake(-50, 50, 0, 0);
-    self.stickerTextView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0];
-    self.stickerTextView.textAlignment = NSTextAlignmentCenter;
-    self.stickerTextView.font = [UIFont fontWithName:@"Chalkduster" size:60];
-    self.stickerTextView.textColor = [UIColor blackColor];
+    //self.stickerTextView = [[UITextView alloc]initWithFrame:CGRectMake(25, 25, 324, 420)];
+    //self.stickerTextView.textContainerInset = UIEdgeInsetsMake(0, 0, 0, 0);
+    //self.stickerTextView.backgroundColor = [UIColor colorWithWhite:1.0f alpha:0.0];
+    //self.stickerTextView.textAlignment = NSTextAlignmentCenter;
+    //self.stickerTextView.font = [UIFont fontWithName:@"Selima" size:60];
+    //self.stickerTextView.textColor = [UIColor blackColor];
     self.stickerTextView.userInteractionEnabled = NO;
     
     [self.view insertSubview:self.stickerTextView atIndex:0];
-    self.stickerTextView.text = @"\n\nAlmost...";
+    self.stickerTextView.text = @"Happy\nNew Year!";
     
-    UIImageView* imageOverlay = [[UIImageView alloc] initWithFrame:self.view.frame];
-    imageOverlay.image = [UIImage imageNamed:@"p2.png"];
+    
+    
+    self.stickerTextView.textAlignment = NSTextAlignmentCenter;
+    self.stickerTextView.attributedText = [[NSAttributedString alloc] initWithString:self.stickerTextView.text
+                                                                          attributes:[FVDefaults stickerTextViewAttributes]];
+    
+    //NSLog(@"reported x:%f y:%f w:%f h:%f", self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
+    UIImageView* imageOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 400, 400)];
+    imageOverlay.image = [UIImage imageNamed:@"bluePattern1.png"];
     imageOverlay.maskView = self.stickerTextView;
     
     [self.view addSubview:imageOverlay];
@@ -160,8 +169,15 @@
         [self.stickerTextView becomeFirstResponder];
         self.stickerTextView.userInteractionEnabled = YES;
         
-        self.stickerTextView.layer.zPosition = 1;
+        self.stickerView.layer.zPosition = -1;
+        self.stickerView.userInteractionEnabled = NO;
         [self.view bringSubviewToFront:self.stickerTextView];
+        
+        self.stickerTextViewCenterY.constant = 200;
+        
+        [UIView animateWithDuration:0.2 animations:^(void) {
+            [self.stickerTextView layoutIfNeeded];
+        }];
     }
     
     // Use this method to finalize any behaviors associated with the change in presentation style.

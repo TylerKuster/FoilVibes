@@ -41,7 +41,7 @@
 
     NSURL *imgPath = [[NSBundle mainBundle] URLForResource:@"potato" withExtension:@"png"];
     
-    self.foilSticker = [[MSSticker alloc]initWithContentsOfFileURL:imgPath localizedDescription:@"sure" error:NULL];
+//    self.foilSticker = [[MSSticker alloc]initWithContentsOfFileURL:imgPath localizedDescription:@"sure" error:NULL];
     
     self.sticker = self.foilSticker;
     self.contentMode = UIViewContentModeScaleAspectFill;
