@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11542" systemVersion="16B2555" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="ObA-dk-sSI">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
@@ -26,38 +26,74 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="black-5.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="7FT-6l-LMm">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="528"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3gB-Hc-Jwl">
-                                <rect key="frame" x="16" y="187" width="288" height="155"/>
+                                <rect key="frame" x="24" y="45" width="272" height="458"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dB-V1-wTn">
-                                        <rect key="frame" x="32" y="28" width="160" height="98"/>
-                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white-4.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="lEm-vT-zVN">
+                                        <rect key="frame" x="0.0" y="0.0" width="272" height="458"/>
+                                    </imageView>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZMY-V7-Ryp" customClass="FVStickerView">
+                                        <rect key="frame" x="0.0" y="0.0" width="224" height="128"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="128" id="2wx-xf-Ljy"/>
+                                            <constraint firstAttribute="width" constant="224" id="Rf4-bM-ZS1"/>
+                                        </constraints>
+                                    </view>
+                                    <label hidden="YES" opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="7dB-V1-wTn" userLabel="Happy New Year!">
+                                        <rect key="frame" x="24" y="24" width="120" height="80"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="80" id="1k5-3y-msO"/>
+                                            <constraint firstAttribute="width" constant="120" id="tsH-gk-hvL"/>
+                                        </constraints>
                                         <string key="text">Happy
 New Year!</string>
-                                        <fontDescription key="fontDescription" name="Selima" family="Selima" pointSize="42"/>
+                                        <fontDescription key="fontDescription" name="Selima" family="Selima" pointSize="32"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="288" id="bLB-kW-1jq"/>
-                                    <constraint firstAttribute="height" constant="155" id="dkv-Nk-qVJ"/>
+                                    <constraint firstAttribute="trailing" secondItem="lEm-vT-zVN" secondAttribute="trailing" id="TRV-KC-6yy"/>
+                                    <constraint firstItem="7dB-V1-wTn" firstAttribute="top" secondItem="3gB-Hc-Jwl" secondAttribute="top" constant="24" id="UTe-Ea-7Vl"/>
+                                    <constraint firstItem="lEm-vT-zVN" firstAttribute="leading" secondItem="3gB-Hc-Jwl" secondAttribute="leading" id="VJI-5Y-JCw"/>
+                                    <constraint firstItem="lEm-vT-zVN" firstAttribute="top" secondItem="3gB-Hc-Jwl" secondAttribute="top" id="XhD-gf-HRd"/>
+                                    <constraint firstItem="ZMY-V7-Ryp" firstAttribute="top" secondItem="3gB-Hc-Jwl" secondAttribute="top" id="aOE-s8-BsC"/>
+                                    <constraint firstAttribute="height" priority="750" constant="157" id="dkv-Nk-qVJ"/>
+                                    <constraint firstAttribute="bottom" secondItem="lEm-vT-zVN" secondAttribute="bottom" id="h3f-2b-pvA"/>
+                                    <constraint firstItem="ZMY-V7-Ryp" firstAttribute="leading" secondItem="3gB-Hc-Jwl" secondAttribute="leading" id="x2S-EP-w5L"/>
+                                    <constraint firstItem="7dB-V1-wTn" firstAttribute="leading" secondItem="3gB-Hc-Jwl" secondAttribute="leading" constant="24" id="zaq-9i-Mci"/>
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" cocoaTouchSystemColor="darkTextColor"/>
+                        <color key="backgroundColor" red="0.11372549086809158" green="0.11372549086809158" blue="0.11372549086809158" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="3gB-Hc-Jwl" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leading" constant="16" id="WyV-b7-sbN"/>
-                            <constraint firstItem="3gB-Hc-Jwl" firstAttribute="centerY" secondItem="zMn-AG-sqS" secondAttribute="centerY" id="yHq-2o-Ebo"/>
+                            <constraint firstItem="7FT-6l-LMm" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leading" id="7TV-nR-t5P"/>
+                            <constraint firstAttribute="trailing" secondItem="7FT-6l-LMm" secondAttribute="trailing" id="VZN-hO-6ks"/>
+                            <constraint firstItem="3gB-Hc-Jwl" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leading" constant="24" id="WyV-b7-sbN"/>
+                            <constraint firstAttribute="trailing" secondItem="3gB-Hc-Jwl" secondAttribute="trailing" constant="24" id="ciX-PX-jPB"/>
+                            <constraint firstItem="7FT-6l-LMm" firstAttribute="top" secondItem="qkL-Od-lgU" secondAttribute="bottom" constant="-20" id="f93-x6-zyP"/>
+                            <constraint firstItem="3gB-Hc-Jwl" firstAttribute="top" secondItem="qkL-Od-lgU" secondAttribute="bottom" constant="25" id="hOP-Fk-8HB"/>
+                            <constraint firstItem="n38-gi-rB5" firstAttribute="top" secondItem="7FT-6l-LMm" secondAttribute="bottom" id="hvw-Pf-aGE"/>
+                            <constraint firstItem="n38-gi-rB5" firstAttribute="top" relation="greaterThanOrEqual" secondItem="3gB-Hc-Jwl" secondAttribute="bottom" constant="25" id="jPF-W5-VmU"/>
                         </constraints>
                     </view>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="320" height="528"/>
+                    <connections>
+                        <outlet property="paperView" destination="3gB-Hc-Jwl" id="cza-p9-L6b"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="X47-rx-isc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="137.59999999999999" y="138.53073463268368"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="black-5.jpg" width="2100" height="1400"/>
+        <image name="white-4.jpg" width="2100" height="1400"/>
+    </resources>
 </document>

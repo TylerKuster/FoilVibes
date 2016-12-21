@@ -7,10 +7,14 @@
 //
 
 #import "MessagesViewController.h"
+#import "FVStickerBrowserView.h"
+#import "FVStickerView.h"
 
+@interface MessagesViewController () <FVStickerBrowserViewDelegate>
 
-@interface MessagesViewController ()
-
+@property (nonatomic, retain) IBOutlet UIView* paperView;
+//@property (nonatomic, retain) IBOutlet FVStickerBrowserView* stickerBrowserView;
+@property (nonatomic, retain) IBOutlet FVStickerView* stickerView;
 @end
 
 @implementation MessagesViewController
@@ -18,21 +22,32 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    //self.stickerView.delegate = self;
+    CGFloat degrees = -4.0; // Because I'm cray
+    self.stickerView.transform = CGAffineTransformMakeRotation(degrees * M_PI/180);
+    //FVStickerBrowserViewController* test = [[FVStickerBrowserViewController alloc]initWithStickerSize:MSStickerSizeRegular];
+    //MSStickerBrowserView* testView = [[MSStickerBrowserView alloc] initWithFrame:self.view.bounds stickerSize:MSStickerSizeRegular];
+    //test.view.frame = CGRectMake(0.0f, 0.0f, 100, 100);
+    //test.view.backgroundColor = [UIColor orangeColor];
+   // [self addChildViewController:test];
+   // [test didMoveToParentViewController:self];
     
-    for (NSString* family in [UIFont familyNames])
-    {
-        NSLog(@"%@", family);
-        
-        for (NSString* name in [UIFont fontNamesForFamilyName: family])
-        {
-            NSLog(@"  %@", name);
-        }
-    }
+  //  [self.paperView addSubview:test.view];
+    
+   // [test.stickerBrowserView reloadData];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+#pragma mark - Sticker Browser View
+
+- (BOOL)textViewShouldBeginEditing:(UITextView *)textView
+{
+    [self requestPresentationStyle:MSMessagesAppPresentationStyleExpanded];
+    [textView becomeFirstResponder];
+    return YES;
 }
 
 #pragma mark - Conversation Handling
