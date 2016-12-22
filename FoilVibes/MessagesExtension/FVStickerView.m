@@ -39,7 +39,7 @@
     // Make the codes here
     self.backgroundColor = [UIColor clearColor];
 
-    NSURL *imgPath = [[NSBundle mainBundle] URLForResource:@"potato" withExtension:@"png"];
+//    NSURL *imgPath = [[NSBundle mainBundle] URLForResource:@"sticker" withExtension:@"png"];
     
 //    self.foilSticker = [[MSSticker alloc]initWithContentsOfFileURL:imgPath localizedDescription:@"sure" error:NULL];
     

@@ -11,13 +11,15 @@
 //#import "FVStickerBrowserView.h"
 #import "FVStickerView.h"
 
-@interface MessagesViewController () <FVStickerViewDelegate>
+@interface MessagesViewController () <FVStickerViewDelegate, MSStickerBrowserViewDataSource>
 
 @property (nonatomic, retain) IBOutlet UIView* paperView;
 //@property (nonatomic, retain) IBOutlet FVStickerBrowserView* stickerBrowserView;
 @property (nonatomic, retain) IBOutlet FVStickerView* stickerView;
 @property (nonatomic, retain) IBOutlet UITextView* stickerTextView;
+@property (nonatomic, retain) UIImageView* imageOverlay;
 @property (nonatomic, retain) IBOutlet NSLayoutConstraint* stickerTextViewCenterY;
+@property (nonatomic, retain) IBOutlet MSStickerBrowserView* stickerBrowserView;
 
 @end
 
@@ -29,6 +31,14 @@
     self.stickerView.delegate = self;
     CGFloat degrees = -4.0; // Because I'm cray
     self.stickerView.transform = CGAffineTransformMakeRotation(degrees * M_PI/180);
+    
+    self.stickerView.delegate = self;
+    self.stickerBrowserView.dataSource = self;
+
+    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(test)];
+    
+    [self.stickerBrowserView addGestureRecognizer:singleFingerTap];
+    
     //FVStickerBrowserViewController* test = [[FVStickerBrowserViewController alloc]initWithStickerSize:MSStickerSizeRegular];
     //MSStickerBrowserView* testView = [[MSStickerBrowserView alloc] initWithFrame:self.view.bounds stickerSize:MSStickerSizeRegular];
     //test.view.frame = CGRectMake(0.0f, 0.0f, 100, 100);
@@ -47,35 +57,59 @@
     //self.stickerTextView.textAlignment = NSTextAlignmentCenter;
     //self.stickerTextView.font = [UIFont fontWithName:@"Selima" size:60];
     //self.stickerTextView.textColor = [UIColor blackColor];
-    self.stickerTextView.userInteractionEnabled = NO;
+    self.stickerTextView.hidden = NO;
     
-    [self.view insertSubview:self.stickerTextView atIndex:0];
+//    [self.view insertSubview:self.stickerTextView atIndex:0];
     self.stickerTextView.text = @"Happy\nNew Year!";
     
     
     
     self.stickerTextView.textAlignment = NSTextAlignmentCenter;
+//    self.stickerTextView.textContainerInset = UIEdgeInsetsMake(-50, 0, 0, 0);
     self.stickerTextView.attributedText = [[NSAttributedString alloc] initWithString:self.stickerTextView.text
                                                                           attributes:[FVDefaults stickerTextViewAttributes]];
     
     //NSLog(@"reported x:%f y:%f w:%f h:%f", self.view.frame.origin.x, self.view.frame.origin.y, self.view.frame.size.width, self.view.frame.size.height);
-    UIImageView* imageOverlay = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 400, 400)];
-    imageOverlay.image = [UIImage imageNamed:@"bluePattern1.png"];
-    imageOverlay.maskView = self.stickerTextView;
+    CGRect imageOffsetRect = self.stickerTextView.frame;
+//    imageOffsetRect.origin.y = self.stickerTextView.bounds.origin.y + 200;
+    imageOffsetRect.size.width = self.stickerTextView.frame.size.width;// + 400;
+    imageOffsetRect.size.height = self.stickerTextView.frame.size.height;// + 400;
     
-    [self.view addSubview:imageOverlay];
+    self.imageOverlay = [[UIImageView alloc] initWithFrame:imageOffsetRect];
+    self.imageOverlay.backgroundColor = [UIColor clearColor];
+    self.imageOverlay.image = [UIImage imageNamed:@"bluePattern1.png"];
+    self.imageOverlay.maskView = self.stickerTextView;
+    
+//    [self.view addSubview:self.imageOverlay];
+    
+    UIView* saveView = [[UIView alloc] initWithFrame:imageOffsetRect];
+    UIImageView* imageView = [[UIImageView alloc]initWithFrame:imageOffsetRect];
+    
+    imageView.image = [UIImage imageNamed:@"bluePattern1.png"];
+    imageView.maskView = self.stickerTextView;
+    
+    [saveView addSubview:imageView];
+    
+    [self saveImageWithView:saveView];
+//    [self saveImageWithView:self.view];
+//    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+//        NSURL *imgPath = [[NSBundle mainBundle] URLForResource:@"sticker" withExtension:@"png"];
+//        
+//        MSSticker* updatedSticker = [[MSSticker alloc]initWithContentsOfFileURL:imgPath localizedDescription:@"sure" error:NULL];
+//        
+//        self.stickerView.sticker = updatedSticker;
+//    });
+
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-/*
+
 - (void)saveImageWithView:(UIView *)view
 {
-    self.imageName = [NSString stringWithFormat:@"foilSticker.png"];
-    
-    UIGraphicsBeginImageContextWithOptions(view.bounds.size, !view.opaque, 0.0);
+    UIGraphicsBeginImageContextWithOptions(CGSizeMake(view.bounds.size.width+100, view.bounds.size.height), !view.opaque, 0.0);
     [view.layer renderInContext:UIGraphicsGetCurrentContext()];
     
     UIImage * img = UIGraphicsGetImageFromCurrentImageContext();
@@ -85,7 +119,7 @@
     NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
                                                          NSUserDomainMask, YES);
     NSString *documentsDirectory = [paths objectAtIndex:0];
-    NSString* path = [documentsDirectory stringByAppendingPathComponent:self.imageName];
+    NSString* path = [documentsDirectory stringByAppendingPathComponent:@"sticker.png"];
     NSData* data = UIImagePNGRepresentation(img);
     [data writeToFile:path atomically:YES];
     
@@ -108,11 +142,11 @@
     //    // Save image.
     //    [UIImagePNGRepresentation(img) writeToFile:filePath atomically:YES];
     //    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-    //[self.stickerBrowserView reloadData];
+//    [self.stickerView reloadData];
     //    });
     
 }
-*/
+
 #pragma mark - Sticker Browser View
 
 - (void)test
@@ -170,7 +204,7 @@
         self.stickerTextView.userInteractionEnabled = YES;
         
         self.stickerView.layer.zPosition = -1;
-        self.stickerView.userInteractionEnabled = NO;
+//        self.stickerView.userInteractionEnabled = NO;
         [self.view bringSubviewToFront:self.stickerTextView];
         
         self.stickerTextViewCenterY.constant = 200;
@@ -178,9 +212,35 @@
         [UIView animateWithDuration:0.2 animations:^(void) {
             [self.stickerTextView layoutIfNeeded];
         }];
+    } else if (presentationStyle == MSMessagesAppPresentationStyleCompact)
+    {
+//        self.stickerTextView.layer.zPosition = -1;
+        self.stickerView.userInteractionEnabled = YES;
     }
     
     // Use this method to finalize any behaviors associated with the change in presentation style.
+}
+
+- (MSSticker *)stickerBrowserView:(MSStickerBrowserView *)stickerBrowserView stickerAtIndex:(NSInteger)index
+{
+    
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory,
+                                                         NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths objectAtIndex:0];
+    NSString* path = [documentsDirectory stringByAppendingPathComponent:@"sticker.png"];
+    
+    MSSticker* stickerTest = [[MSSticker alloc]initWithContentsOfFileURL:[NSURL fileURLWithPath:path] localizedDescription:@"sure" error:NULL];
+    //    UILabel* noteLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, 100.0f, 100.0f)];
+    //    noteLabel.text = @"test";
+    //
+    //    [self.stickerBrowserView addSubview:noteLabel];
+    
+    return stickerTest;
+}
+
+- (NSInteger)numberOfStickersInStickerBrowserView:(MSStickerBrowserView *)stickerBrowserView
+{
+    return 1;
 }
 
 @end
