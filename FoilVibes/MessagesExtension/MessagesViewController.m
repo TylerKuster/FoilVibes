@@ -15,7 +15,7 @@
 
 @property (nonatomic, retain) IBOutlet UIView* paperView;
 //@property (nonatomic, retain) IBOutlet FVStickerBrowserView* stickerBrowserView;
-@property (nonatomic, retain) IBOutlet FVStickerView* stickerView;
+//@property (nonatomic, retain) IBOutlet FVStickerView* stickerView;
 @property (nonatomic, retain) IBOutlet UITextView* stickerTextView;
 @property (nonatomic, retain) UIImageView* imageOverlay;
 @property (nonatomic, retain) IBOutlet NSLayoutConstraint* stickerTextViewCenterY;
@@ -28,27 +28,27 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-    self.stickerView.delegate = self;
+//    self.stickerView.delegate = self;
     CGFloat degrees = -4.0; // Because I'm cray
-    self.stickerView.transform = CGAffineTransformMakeRotation(degrees * M_PI/180);
+//    self.stickerView.transform = CGAffineTransformMakeRotation(degrees * M_PI/180);
     
-    self.stickerView.delegate = self;
+//    self.stickerView.delegate = self;
     self.stickerBrowserView.dataSource = self;
 
-    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(test)];
+    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(test:)];
     
     [self.stickerBrowserView addGestureRecognizer:singleFingerTap];
     
-    //FVStickerBrowserViewController* test = [[FVStickerBrowserViewController alloc]initWithStickerSize:MSStickerSizeRegular];
-    //MSStickerBrowserView* testView = [[MSStickerBrowserView alloc] initWithFrame:self.view.bounds stickerSize:MSStickerSizeRegular];
-    //test.view.frame = CGRectMake(0.0f, 0.0f, 100, 100);
-    //test.view.backgroundColor = [UIColor orangeColor];
-   // [self addChildViewController:test];
-   // [test didMoveToParentViewController:self];
-    
-  //  [self.paperView addSubview:test.view];
-    
-   // [test.stickerBrowserView reloadData];
+////    FVStickerBrowserViewController* test = [[FVStickerBrowserViewController alloc]initWithStickerSize:MSStickerSizeRegular];
+//    MSStickerBrowserView* test = [[MSStickerBrowserView alloc] initWithFrame:self.view.bounds stickerSize:MSStickerSizeRegular];
+//    test.view.frame = CGRectMake(0.0f, 0.0f, 100, 100);
+//    test.view.backgroundColor = [UIColor orangeColor];
+//    [self addChildViewController:test];
+//    [test didMoveToParentViewController:self];
+//    
+//    [self.paperView addSubview:test.view];
+//    
+//    [test.stickerBrowserView reloadData];
     
     
     //self.stickerTextView = [[UITextView alloc]initWithFrame:CGRectMake(25, 25, 324, 420)];
@@ -85,7 +85,7 @@
     UIView* saveView = [[UIView alloc] initWithFrame:imageOffsetRect];
     UIImageView* imageView = [[UIImageView alloc]initWithFrame:imageOffsetRect];
     
-    imageView.image = [UIImage imageNamed:@"bluePattern1.png"];
+    imageView.image = [UIImage imageNamed:@"goldPattern1.png"];
     imageView.maskView = self.stickerTextView;
     
     [saveView addSubview:imageView];
@@ -149,9 +149,10 @@
 
 #pragma mark - Sticker Browser View
 
-- (void)test
+- (void)test:(UITapGestureRecognizer *)recognizer
 {
-    [self requestPresentationStyle:MSMessagesAppPresentationStyleExpanded];
+    
+//    [self requestPresentationStyle:MSMessagesAppPresentationStyleExpanded];
 }
 
 #pragma mark - Conversation Handling
@@ -203,7 +204,7 @@
         [self.stickerTextView becomeFirstResponder];
         self.stickerTextView.userInteractionEnabled = YES;
         
-        self.stickerView.layer.zPosition = -1;
+//        self.stickerView.layer.zPosition = -1;
 //        self.stickerView.userInteractionEnabled = NO;
         [self.view bringSubviewToFront:self.stickerTextView];
         
@@ -215,7 +216,7 @@
     } else if (presentationStyle == MSMessagesAppPresentationStyleCompact)
     {
 //        self.stickerTextView.layer.zPosition = -1;
-        self.stickerView.userInteractionEnabled = YES;
+//        self.stickerView.userInteractionEnabled = YES;
     }
     
     // Use this method to finalize any behaviors associated with the change in presentation style.
@@ -234,6 +235,9 @@
     //    noteLabel.text = @"test";
     //
     //    [self.stickerBrowserView addSubview:noteLabel];
+    UITapGestureRecognizer *singleFingerTap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(test:)];
+    
+    [stickerBrowserView addGestureRecognizer:singleFingerTap];
     
     return stickerTest;
 }

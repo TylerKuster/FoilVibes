@@ -9,7 +9,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="Selima .otf">
+        <array key="Selima .ttf">
             <string>Selima</string>
         </array>
     </customFonts>
@@ -43,7 +43,7 @@ New Year!</string>
                             <view opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="3gB-Hc-Jwl" customClass="MSStickerBrowserView">
                                 <rect key="frame" x="24" y="45" width="272" height="250"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white-4.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="lEm-vT-zVN">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="white-7.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="lEm-vT-zVN">
                                         <rect key="frame" x="0.0" y="0.0" width="272" height="250"/>
                                     </imageView>
                                 </subviews>
@@ -53,7 +53,6 @@ New Year!</string>
                                     <constraint firstItem="lEm-vT-zVN" firstAttribute="leading" secondItem="3gB-Hc-Jwl" secondAttribute="leading" id="DJE-eY-8Gp"/>
                                     <constraint firstItem="lEm-vT-zVN" firstAttribute="top" secondItem="3gB-Hc-Jwl" secondAttribute="top" id="K2k-lH-wJ9"/>
                                     <constraint firstAttribute="height" priority="750" constant="272" id="dkv-Nk-qVJ"/>
-                                    <constraint firstAttribute="width" constant="272" id="nvI-4P-75K"/>
                                     <constraint firstAttribute="bottom" secondItem="lEm-vT-zVN" secondAttribute="bottom" id="rgO-HO-11D"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
@@ -67,6 +66,7 @@ New Year!</string>
                         <constraints>
                             <constraint firstItem="7FT-6l-LMm" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leading" id="7TV-nR-t5P"/>
                             <constraint firstItem="gNf-xH-6o2" firstAttribute="top" secondItem="qkL-Od-lgU" secondAttribute="bottom" constant="-2" id="9te-5U-ih6"/>
+                            <constraint firstAttribute="trailing" secondItem="3gB-Hc-Jwl" secondAttribute="trailing" constant="24" id="9yr-4l-Xw3"/>
                             <constraint firstAttribute="trailing" secondItem="7FT-6l-LMm" secondAttribute="trailing" id="VZN-hO-6ks"/>
                             <constraint firstItem="3gB-Hc-Jwl" firstAttribute="leading" secondItem="zMn-AG-sqS" secondAttribute="leading" constant="24" id="WyV-b7-sbN"/>
                             <constraint firstItem="7FT-6l-LMm" firstAttribute="top" secondItem="qkL-Od-lgU" secondAttribute="bottom" constant="-20" id="f93-x6-zyP"/>
@@ -90,6 +90,6 @@ New Year!</string>
     </scenes>
     <resources>
         <image name="black-5.jpg" width="2100" height="1400"/>
-        <image name="white-4.jpg" width="2100" height="1400"/>
+        <image name="white-7.jpg" width="2100" height="1400"/>
     </resources>
 </document>

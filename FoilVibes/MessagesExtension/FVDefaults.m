@@ -18,7 +18,7 @@
     UIFont* fontStyle;
     
     NSLog(@"this is a:%@", [self platformString]);
-    if ([[self platformString] isEqualToString:@"iPhone 6+"])
+    if ([[self platformString] isEqualToString:@"iPhone9,3"])
     {
         paragraphStyle.lineHeightMultiple = 142.0f;
         paragraphStyle.maximumLineHeight = 142.0f;
